@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 
 var pg = require('pg');
+const app = require("../app");
 app.get('/db', function (request, response) {
   pg.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
