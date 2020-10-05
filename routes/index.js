@@ -25,6 +25,7 @@ router.get('/db', function (request, response) {
       done();
       if (err)
       { client.release();
+        console.log(client);
         console.error(err); response.send("Error " + err); }
       else
       { response.render('pages/db', {results: result.rows} );
