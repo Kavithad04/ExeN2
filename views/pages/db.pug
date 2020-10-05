@@ -1,0 +1,10 @@
+doctype html
+html
+    head
+    body
+        .container
+            h2 Database Results
+            ul
+                | <% results.forEach(function(r) { %>
+                li <%= r.id %> - <%= r.name %>
+                |         <% }); %>
