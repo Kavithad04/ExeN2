@@ -33,6 +33,5 @@ router.get('/db', function (request, response) {
       client.release();
       }
     });
-    client.release();
   });
 });
