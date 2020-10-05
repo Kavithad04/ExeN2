@@ -29,7 +29,6 @@ router.get('/db', function (request, response) {
       } else {
         console.info("Connection is success:")
         response.render('pages/db', {results: result.rows} );
-        client.release();
       }
     });
   });
