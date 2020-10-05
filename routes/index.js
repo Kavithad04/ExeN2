@@ -13,17 +13,24 @@ module.exports = router;
 const {Pool} = require("pg");
 var conStr = process.env.DATABASE_URL;
 const pool = new Pool({
-  connectionString: conStr
+  connectionString: conStr,
+  queueLimit: 0,
+  connectionLimit: 0
 });
+
 
 router.get('/db', function (request, response) {
   pool.connect(function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
-      { console.error(err); response.send("Error " + err); }
+      { client.release();
+        console.error(err); response.send("Error " + err); }
       else
-      { response.render('pages/db', {results: result.rows} ); }
+      { response.render('pages/db', {results: result.rows} );
+      client.release();
+      }
     });
+    client.release();
   });
 });
