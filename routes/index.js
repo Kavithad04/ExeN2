@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 module.exports = router;
 
 const {Pool} = require("pg");
-var conStr = process.env.DATBASE_URL;
+var conStr = process.env.DATABASE_URL;
 const pool = new Pool({
   connectionString: conStr
 });
