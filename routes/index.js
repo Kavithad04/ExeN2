@@ -24,8 +24,9 @@ router.get('/db', function (request, response) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
-      { client.release();
+      {
         console.log(client);
+        client.release();
         console.error(err); response.send("Error " + err); }
       else
       { response.render('pages/db', {results: result.rows} );
