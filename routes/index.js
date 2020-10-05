@@ -13,9 +13,7 @@ module.exports = router;
 const {Pool} = require("pg");
 var conStr = process.env.DATABASE_URL;
 const pool = new Pool({
-  connectionString: conStr,
-  queueLimit: 0,
-  connectionLimit: 0
+  connectionString: conStr
 });
 
 
