@@ -10,9 +10,10 @@ router.get('/', function(req, res, next) {
 
 module.exports = router;
 
-const pg = require('pg');
+var pg = require('pg');
+var pool = new pg.Pool()
 router.get('/db', function (request, response) {
-  pg.connect(process.env.DATABASE_URL, function(err, client, done) {
+  pool.connect(process.env.DATABASE_URL, function(err, client, done) {
     client.query('SELECT * FROM test_table', function(err, result) {
       done();
       if (err)
